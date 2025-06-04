@@ -1,0 +1,96 @@
+Guía de Instalación y Ejecución
+Predicción de precios por segmento con Machine Learning (Python)
+
+1. Verificar instalación de Python
+Abre una terminal (Ctrl + Alt + T) y ejecuta:
+
+python3 --version
+
+Si Python está instalado correctamente, deberías ver una salida como:
+
+Python 3.10.12
+
+También puedes verificar la ruta ejecutable:
+
+which python3
+
+Si no está instalado, verás un mensaje como:
+
+python3: command not found
+
+
+
+2. Instalar Python en Linux (Ubuntu/Debian)
+Ejecuta los siguientes comandos para instalar Python y pip:
+
+sudo apt update
+sudo apt install python3 -y
+sudo apt install python3-pip -y
+
+Verifica la instalación:
+
+python3 --version
+pip3 --version
+
+3. Instalación de librerías requeridas
+Instala las librerías necesarias con pip:
+
+pip3 install pandas scikit-learn pyarrow joblib matplotlib seaborn
+Esto asegura que el script tenga todas las dependencias necesarias para funcionar correctamente.
+
+4. Preparar carpeta de trabajo
+Desde tu máquina local:
+
+Crea una carpeta para el proyecto:
+
+mkdir ~/proyecto_prediccion_precios
+cd ~/proyecto_prediccion_precios
+Copia los archivos a esa carpeta:
+
+predecir_precios_grafica.py
+
+clothes_price_prediction_dat.csv
+
+Puedes hacerlo manualmente o desde terminal, por ejemplo:
+
+cp /ruta/donde/están/los/archivos/*.py .
+cp /ruta/donde/están/los/archivos/*.csv .
+
+5. Ejecución del script
+Ubícate dentro del directorio y ejecuta:
+
+python3 predecir_precios_grafica.py
+
+Durante la ejecución:
+El script te pedirá la ruta completa del archivo CSV de entrada. Escribe la ruta del archivo clothes_price_prediction_dat.csv.
+
+Luego te preguntará qué modelo deseas usar:
+
+0: LinearRegression
+
+1: RandomForest
+
+2: XGBoost
+
+Después de entrenar, el script:
+
+Generará combinaciones de segmentos.
+
+Predecirá precios para cada uno.
+
+Guardará los resultados en Parquet y opcionalmente en JSON.
+
+Ofrecerá visualizaciones gráficas de los resultados y errores.
+
+6. Salidas generadas
+Los archivos generados incluyen:
+
+modelo_precio_<modelo>.pkl: modelo entrenado.
+
+predicciones_por_segmento.parquet: archivo principal con predicciones.
+
+predicciones_por_segmento.json: versión opcional en JSON.
+
+predicciones_por_segmento_filtrado.parquet/json: versión solo con datos conocidos.
+
+Visualizaciones comparativas entre precio real y predicho.
